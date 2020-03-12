@@ -16,7 +16,8 @@ get_header();
 
 
  $args2 = array(
-    "category_name" => "conference",
+    "category_name" => "evenements",
+    "posts_per_page" => 3,
     "orderby" => "date",
     "order" => "DESC"
 );
@@ -24,13 +25,6 @@ get_header();
  $query2 = new WP_Query( $args2 );
 
 
- $args3 = array(
-    "category_name" => "evenements",
-    "orderby" => "date",
-    "order" => "DESC"
-);
-
- $query3 = new WP_Query( $args3 );
 ?>
 
 <!-- EVENEMENTS -->
@@ -97,7 +91,6 @@ get_header();
      echo'<div class="conteneur">';
      echo '<h4>' . get_the_title() . '</h4>';
      echo '<p>'.   get_the_excerpt().'</p>';
-     echo '<p>'.get_the_date().'</p>';
      echo'</div>';
      echo'<div class="image">';
      the_post_thumbnail('thumbnail');
@@ -111,14 +104,6 @@ get_header();
   * wp_reset_postdata().
   */
  wp_reset_postdata();
-
-  // The Loop
-  while ( $query3->have_posts() ) {
-    $query3->the_post();
-    echo '<h4>' . get_the_title() . '</h4>';
-    echo '<p>'.get_the_date().'</p>';
- 
-}
   
  ?>
 
